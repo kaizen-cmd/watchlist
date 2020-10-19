@@ -20,7 +20,7 @@ const SearchMovie = () => {
   ] = useContext(MovieContext);
   const searchMovie = async (title) => {
     const response = await Axios.get(
-      `http://www.omdbapi.com/?apikey=1dc02aaf&t=${title}`
+      `https://www.omdbapi.com/?apikey=1dc02aaf&t=${title}`
     );
     const data = response.data;
     setSrc(data.Poster);
