@@ -56,16 +56,27 @@ input::placeholder {
 
 .list-card {
   border-top: #ff4444 4px solid;
+  transition: 0.3s;
 }
 
 .list-card:hover {
   background-color: rgb(167, 166, 166) !important;
+  transform: scale(1.02);
 }
 
 a:hover,
 h3 {
   text-decoration: none;
   color: grey !important;
+}
+
+.h-200 {
+  height: 200px;
+}
+
+.mw-100 {
+  max-width: 100% !important;
+  height: 100%;
 }
 
 @media screen and (max-width: 900px) {

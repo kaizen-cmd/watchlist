@@ -49,6 +49,7 @@ const ListDropDown = () => {
           selected !== null &&
           listsRef.child(key.toString()).child("movies").push(movieObj);
         setMessage(`${title} successfully added to ${selected}`);
+        history.push(`/list/${selected}`);
       });
   };
 
