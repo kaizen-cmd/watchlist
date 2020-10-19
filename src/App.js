@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import HomePage from "./components/homepage/home";
+import TopNav from "./components/navigation/topnav";
+import { BrowserRouter, Route } from "react-router-dom";
+import { MovieProvider } from "./context/movie-provider";
+import { ListsProvider } from "./context/lists-provider";
+import ListDropDown from "./components/saveToList/list-drop-down";
+import ListDetail from "./components/listDetail/list-detail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MovieProvider>
+        <ListsProvider>
+          <BrowserRouter>
+            <TopNav />
+            <Route path="/" exact={true} component={HomePage} />
+            <Route path="/choose-list" exact={true} component={ListDropDown} />
+            <Route path={`/list/:title`} component={ListDetail} />
+          </BrowserRouter>
+        </ListsProvider>
+      </MovieProvider>
+    </>
   );
 }
 
