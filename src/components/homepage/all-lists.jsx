@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { ListsContext } from "../../context/lists-provider";
 import ListCard from "./list-card";
 

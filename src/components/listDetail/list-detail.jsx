@@ -9,6 +9,7 @@ const ListDetail = ({ match }) => {
 
   useEffect(() => {
     fetchList();
+    // eslint-disable-next-line
   }, []);
 
   const fetchList = () => {
@@ -25,8 +26,8 @@ const ListDetail = ({ match }) => {
         setTitle(data[key].title);
         setUsername(data[key].username);
         var movieList = [];
-        for (var index in data[key].movies) {
-          var movie = data[key].movies[index];
+        for (var index2 in data[key].movies) {
+          var movie = data[key].movies[index2];
           movieList.push({
             title: movie.title,
             src: movie.src,

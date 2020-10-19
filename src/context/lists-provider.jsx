@@ -24,6 +24,7 @@ export const ListsProvider = (props) => {
 
   useEffect(() => {
     fetchLists();
+    // eslint-disable-next-line
   }, []);
 
   return (
