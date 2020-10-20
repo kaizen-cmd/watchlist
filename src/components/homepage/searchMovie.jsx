@@ -24,7 +24,7 @@ const SearchMovie = () => {
 
   const searchMovie = async (qtitle) => {
     setDisableBtn(true);
-    setSearchBtn(<img src={loader} className="mw-100" />);
+    setSearchBtn(<img src={loader} className="mw-100" alt="loader" />);
     const response = await Axios.get(
       `https://www.omdbapi.com/?apikey=1dc02aaf&t=${qtitle}`
     );
