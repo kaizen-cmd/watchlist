@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react";
 import Axios from "axios";
 import { MovieContext } from "../../context/movie-provider";
+import loader from "../../loader.gif";
 
 const SearchMovie = () => {
+  const [searchBtn, setSearchBtn] = useState("Search");
+  const [disableBtn, setDisableBtn] = useState(false);
   const [searchVal, setSearchVal] = useState("");
   const [
     ,
     setSrc,
-    ,
+    title,
     setTitle,
     ,
     setRating,
@@ -18,18 +21,28 @@ const SearchMovie = () => {
     ,
     setGenre,
   ] = useContext(MovieContext);
-  const searchMovie = async (title) => {
+
+  const searchMovie = async (qtitle) => {
+    setDisableBtn(true);
+    setSearchBtn(<img src={loader} className="mw-100" />);
     const response = await Axios.get(
-      `https://www.omdbapi.com/?apikey=1dc02aaf&t=${title}`
+      `https://www.omdbapi.com/?apikey=1dc02aaf&t=${qtitle}`
     );
-    const data = response.data;
-    setSrc(data.Poster);
+    const data = await response.data;
     setTitle(data.Title);
-    setActors(data.Actors);
-    setRating(data.imdbRating);
-    setFilmLength(data.Runtime);
-    setGenre(data.Genre);
+    if (data.title === "") {
+      setTitle("No movies found for this title :(");
+    } else {
+      setSrc(data.Poster);
+      setTitle(data.Title);
+      setActors(data.Actors);
+      setRating(data.imdbRating);
+      setFilmLength(data.Runtime);
+      setGenre(data.Genre);
+    }
     setSearchVal("");
+    setDisableBtn(false);
+    setSearchBtn("Search");
   };
 
   return (
@@ -51,11 +64,14 @@ const SearchMovie = () => {
           />
         </div>
         <div>
-          <input
+          <button
             type="submit"
-            value="Search"
-            className="bg-danger text-light font-weight-bold search-btn"
-          />
+            className="bg-danger text-light font-weight-bold search-btn shadow"
+            disabled={disableBtn}
+            style={{ width: "200px !important", height: "8.32vh" }}
+          >
+            {searchBtn}
+          </button>
         </div>
       </div>
     </form>

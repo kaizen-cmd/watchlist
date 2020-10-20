@@ -62,7 +62,7 @@ const Poster = () => {
         </div>
       ) : (
         <h4 className="font-weight-bold text-light mt-4">
-          No movie or tv series with this title :(
+          {title}
         </h4>
       )}
     </>

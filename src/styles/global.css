@@ -27,7 +27,8 @@ input::placeholder {
 
 .search-btn {
   font-size: 1.2rem;
-  padding: 15.5px 27px;
+  padding: 15.6px 27px;
+  border: none;
 }
 
 .add-btn {
