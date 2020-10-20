@@ -10,7 +10,7 @@ const SearchMovie = () => {
   const [
     ,
     setSrc,
-    title,
+    ,
     setTitle,
     ,
     setRating,
