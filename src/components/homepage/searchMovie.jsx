@@ -30,11 +30,15 @@ const SearchMovie = () => {
     );
     const data = await response.data;
     setTitle(data.Title);
-    if (data.title === "") {
+    if (data.Title === undefined) {
       setTitle("No movies found for this title :(");
+      setSrc("");
+      setActors("");
+      setRating("");
+      setFilmLength("");
+      setGenre("");
     } else {
       setSrc(data.Poster);
-      setTitle(data.Title);
       setActors(data.Actors);
       setRating(data.imdbRating);
       setFilmLength(data.Runtime);
