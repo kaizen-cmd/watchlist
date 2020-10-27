@@ -26,31 +26,35 @@ const ListDropDown = () => {
 
   const saveMovieToList = (e) => {
     e.preventDefault();
-    const listsRef = firebase.database().ref("watchlists");
-    var key;
-    listsRef
-      .orderByChild("title")
-      .equalTo(selected)
-      .once("value", (snapshot) => {
-        for (var i in snapshot.val()) {
-          key = i;
-        }
-      })
-      .then(() => {
-        const movieObj = {
-          title: title,
-          src: src,
-          rating: rating,
-          filmLnegth: filmLength,
-          actors: actors,
-          genre: genre,
-        };
-        title !== "" &&
-          selected !== null &&
-          listsRef.child(key.toString()).child("movies").push(movieObj);
-        setMessage(`${title} successfully added to ${selected}`);
-        history.push(`/list/${selected}`);
-      });
+    if (selected !== null) {
+      const listsRef = firebase.database().ref("watchlists");
+      var key;
+      listsRef
+        .orderByChild("title")
+        .equalTo(selected)
+        .once("value", (snapshot) => {
+          for (var i in snapshot.val()) {
+            key = i;
+          }
+        })
+        .then(() => {
+          const movieObj = {
+            title: title,
+            src: src,
+            rating: rating,
+            filmLnegth: filmLength,
+            actors: actors,
+            genre: genre,
+          };
+          title !== "" &&
+            selected !== null &&
+            listsRef.child(key.toString()).child("movies").push(movieObj);
+          setMessage(`${title} successfully added to ${selected}`);
+          history.push(`/list/${selected}`);
+        });
+    } else {
+      setMessage("Please select an option from the drop down.")
+    }
   };
 
   return (

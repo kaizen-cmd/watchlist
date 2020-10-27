@@ -6,9 +6,9 @@ const AllLists = () => {
   const [lists] = useContext(ListsContext);
   var delay = -0.1;
   return (
-    <div>
+    <div className="mt-5">
       <h3 className="text-danger">Watchlists created by our lovely users</h3>
-      <div className="row py-5">
+      <div className="row pb-5 pt-3">
         {lists.map((list, index) => {
           delay += 0.1;
           return (
