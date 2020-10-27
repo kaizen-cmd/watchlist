@@ -4,14 +4,20 @@ import ListCard from "./list-card";
 
 const AllLists = () => {
   const [lists] = useContext(ListsContext);
-
+  var delay = -0.1;
   return (
-    <div className="mt-5">
+    <div>
       <h3 className="text-danger">Watchlists created by our lovely users</h3>
-      <div className="row">
+      <div className="row py-5">
         {lists.map((list, index) => {
+          delay += 0.1;
           return (
-            <ListCard key={index} title={list.title} username={list.username} />
+            <ListCard
+              key={index}
+              title={list.title}
+              username={list.username}
+              delay={delay}
+            />
           );
         })}
       </div>
